@@ -5,7 +5,7 @@ RUN dnf update -y
 # All the base build tools!
 RUN dnf install -y bzip2 bzip2-devel clang cmake cmake3 gcc-c++ git hg \
     libcxx-devel libstdc++-static libuuid-devel libxml2-devel llvm-devel \
-    lzma-sdk-devel openal-soft-devel openssl-devel patch svn yum-utils \
+    lzma-sdk-devel mingw-SDL2 openal-soft-devel openssl-devel patch svn yum-utils \
     yum-plugin-copr
 
 # SDL2 dependencies
