@@ -1,24 +1,18 @@
-FROM centos
+FROM fedora
 
-RUN dnf update
-
-RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-RUN dnf install centos-release-scl
+RUN dnf update -y
 
 # All the base build tools!
-RUN dnf install bzip2 bzip2-devel clang cmake cmake3 gcc-c++ git hg \
+RUN dnf install -y bzip2 bzip2-devel clang cmake cmake3 gcc-c++ git hg \
     libcxx-devel libstdc++-static libuuid-devel libxml2-devel llvm-devel \
     lzma-sdk-devel openal-soft-devel openssl-devel patch svn yum-utils \
     yum-plugin-copr
 
 # SDL2 dependencies
-RUN dnf builddep SDL2
+RUN dnf builddep -y SDL2
 
-# Coprs for MinGW as well as GCC 8, needed to build Clang/LLVM/osxcross
-RUN dnf copr enable mlampe/devtoolset-8
-RUN dnf copr enable alonid/mingw-epel7
-RUN dnf install devtoolset-8 mingw32-* mingw64-*
+# MinGW
+RUN dnf install -y mingw64-*
 
 # CMake3 by default
 RUN alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake 10 \
