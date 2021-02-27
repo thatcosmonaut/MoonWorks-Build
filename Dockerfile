@@ -25,3 +25,6 @@ RUN alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake3 20 \
     --slave /usr/local/bin/cpack cpack /usr/bin/cpack3 \
     --slave /usr/local/bin/ccmake ccmake /usr/bin/ccmake3 \
     --family cmake
+
+# fix MinGW SDL2 cmake config
+RUN sed -i '12,$ d' /usr/x86_64-w64-mingw32/sys-root/mingw/lib/cmake/SDL2/sdl2-config.cmake
