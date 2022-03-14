@@ -12,7 +12,7 @@ RUN dnf install -y bzip2 bzip2-devel clang cmake cmake3 gcc-c++ git hg \
 RUN dnf builddep -y SDL2
 
 # MinGW
-RUN dnf install -y mingw64-*
+RUN dnf install -y mingw64-vulkan-* mingw64-SDL2* mingw64-gcc* mingw64-cpp* mingw64-spirv*
 
 # CMake3 by default
 RUN alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake 10 \
